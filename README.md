@@ -40,3 +40,5 @@ When I first code the game, I will create a static grid using a table in html. I
 
 After writing the pseudocode, I suspect I might be spending most of my time to get the connect four game going, but if I have enough, I will try to generate the table with jQuery, giving each cell an appropriate id and class (or maybe just two classes will be enough to determine a unique cell when comparing the line). I’m guessing by this time, I’ll want to focus on making it look nicer if I have anytime to spare.
 
+![](./corg-wireframe.png)
+
