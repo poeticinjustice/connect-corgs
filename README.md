@@ -9,3 +9,7 @@ That’s the only goal, initially. If I can figure out how to make the connect f
 
 At first, it would be one corgi’s butt and another corgi’s face that would duel, but I would like to have arrays of images of different color corgwn (the plural of corgis if you speak Welsh, the dog’s indigenous language) that would duke it out. I would even consider adding inferior animals like cats or c0derz. 
 
+Before I add the pseudocode, why is my pdf pink? There's no such thing as a pink corgi!
+
+
+
