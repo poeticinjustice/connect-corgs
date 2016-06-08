@@ -11,7 +11,7 @@ At first, it would be one corgi’s butt and another corgi’s face that would d
 
 Before I add the pseudocode, why is my pdf pink? There's no such thing as a pink corgi!
 
-PSEUDOCODE
+Pseudocode
 
 When I first code the game, I will create a static grid using a table in html. If I find success with my connect four algorithm, I will create the table dynamically using jquery, but I suspect the algorithm will be the most difficult part to implement, so the rest of this discussion will be about a regular game of connect four with a static grid in an html table.
 
@@ -35,5 +35,8 @@ When I first code the game, I will create a static grid using a table in html. I
             - This is probably where I’m going to need the most help (like if he goes in one direction, then tracks back, I’ll need to make sure that each cell is only counted once—maybe it will create an array that will check for duplicates—each cell could be given an id based on its position in the table)
         - Every time a corgi is dropped, it will have to trigger this pattern, which will begin running in a clockwise motion and will go in the opposite direction once it hits an empty cell, the end of the grid, or a cell populated by the opponent.
             - The function will only have to track 180 degrees because it will go in the other direction, but I will test 360 degrees in case.
+            - I’ll use some jQuery animation to show when it’s looking for matches each time it finds a neighboring match (kind of like as console.log, and it might look nice for players)
 - If four cells in a line match, someone wins
+
+After writing the pseudocode, I suspect I might be spending most of my time to get the connect four game going, but if I have enough, I will try to generate the table with jQuery, giving each cell an appropriate id and class (or maybe just two classes will be enough to determine a unique cell when comparing the line). I’m guessing by this time, I’ll want to focus on making it look nicer if I have anytime to spare.
 
