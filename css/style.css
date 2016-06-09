@@ -29,6 +29,10 @@ table {
   background-color: black;
 }
 
+.blue {
+  background-color: blue;
+}
+
 .center {
   text-align: center;
   margin: auto;
