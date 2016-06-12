@@ -2,7 +2,7 @@ $(document).ready(function() {
   console.log('loaded');
 
   const PLAYERS = ['face','butt'];
-  const MIN_PLAYS_FOR_WIN = 2;
+  const MIN_PLAYS_FOR_WIN = 7;
 
   let currPlayer = 0;
   let totalPlays = 0;
@@ -16,6 +16,10 @@ $(document).ready(function() {
     [], // col5
     []  // col6
   ];
+
+  $('button').on('click', function() {
+    location.reload();
+  });
 
   function changeTurns(){
     if(totalPlays % 2 === 0) {
@@ -35,43 +39,100 @@ $(document).ready(function() {
     })
   }
 
-  let col0 = board[0];
-  let col1 = board[1];
-  let col2 = board[2];
-  let col3 = board[3];
-
-  let colCheck = board[$(this)];
-
-
   function testWin() {
-    var win0=3, len=board.length, r=0, c=0, dr=0, dl=0;
-    for(var i=0;i<len;i++){
-      for(var j=0;j<len;j++){
-        (board[j][i]===0) ? c++ : c=0;
-        (board[i][j]===0) ? r++ : r=0;
-        if(board[i][j]===0 && i<len-win0+1){ dr=0; dl=0;
-          for(var z=0;z<win0;z++){
-            (board[i+z][j+z]===0) ? dr++ : dr=0;
-            (board[i+z][j-z]===0) ? dl++ : dl=0;
+    let win0 = 4; // declare length for face to win
+    let win1 = 4; // declare length for butt to win
+    let bLength = board.length; // length of board for calculation
+    let rowSeries = 0; // number of consecutive repetitions in row
+    let colSeries = 0;  // number of consecutive repetitions in column
+    let diagRightSeries = 0; // number of consecutive repetitions in right diagnal
+    let diagLeftSeries = 0; // number of consecutive repetitions in left diagnal
+    for( var i = 0; i < bLength; i++ ) { // begin calculating for win0
+      for( var j = 0; j < bLength; j++ ) {
+        // (board[j][i]===0) ? c++ : c=0;
+        if( board[i][j] === 0 ) {
+          colSeries++;
+        } else {
+          colSeries=false;
+        }
+        // (board[i][j]===0) ? r++ : r=0;
+        if( board[i][j] === 0 ) {
+          console.log(board[i][j]);
+          rowSeries++;
+        } else {
+          rowSeries=false;
+        }
+        if( board[i][j] === 0 && i < bLength - win0 + 1 ) {
+          diagRightSeries = false;
+          diagLeftSeries = false;
+          for( var z = 0; z < win0; z++ ) {
+            // (board[i+z][j+z]===0) ? dr++ : dr = 0;
+            if( board[i+z][j+z] === 0 ) {
+              diagRightSeries++;
+            } else {
+              diagRightSeries = false;
+            }
+            // (board[i+z][j-z]===0) ? dl++ : dl = 0;
+            if( board[i+z][j-z] === 0 ) {
+              diagLeftSeries++;
+            } else {
+              diagLeftSeries = false;
+            }
           }
         }
-        if(c===win0 || r===win0 || dr===win0 || dl===win0){ alert("Zero wins!"); return true;}
-      } r=0;
+        if(
+          colSeries === win0 ||
+          rowSeries === win0 ||
+          diagRightSeries === win0 ||
+          diagLeftSeries === win0 ) {
+          return true;
+          $('p').text(' ');
+          $('p').text('Corgi Face Wins')
+        }
+      } rowSeries = false;
     }
 
-    var win1=3, len=board.length, r=0, c=0, dr=0, dl=0;
-    for(var i=0;i<len;i++){
-      for(var j=0;j<len;j++){
-        (board[j][i]===1) ? c++ : c=0;
-        (board[i][j]===1) ? r++ : r=0;
-        if(board[i][j]===1 && i<len-win1+1){ dr=0; dl=0;
-          for(var z=0;z<win1;z++){
-            (board[i+z][j+z]===1) ? dr++ : dr=0;
-            (board[i+z][j-z]===1) ? dl++ : dl=0;
+    for( var i = 0; i < bLength; i++ ) {
+      for( var j = 0; j < bLength; j++ ) {
+        // (board[j][i] === 1) ? c++ : c=0;
+        if( board[j][i] === 1 ) {
+          colSeries++;
+        } else {
+          colSeries = false;
+        }
+        //(board[i][j]===1) ? r++ : r=0;
+        if( board[i][j] === 1 ) {
+          rowSeries++
+        } else {
+          rowSeries = false;
+        }
+        if( board[i][j] === 1 && i < bLength-win1 + 1 ){
+          diagRightSeries = false;
+          diagLeftSeries = false;
+          for( var z = 0; z < win1; z++){
+            // (board[i+z][j+z]===1) ? dr++ : dr=0;
+            if( board[i+z][j+z] === 1) {
+              diagRightSeries++;
+            } else {
+              diagRightSeries = false;
+            }
+            // (board[i+z][j-z]===1) ? dl++ : dl=0;
+            if (board[i+z][j-z] === 1) {
+              diagLeftSeries++;
+            } else {
+              diagLeftSeries = false;
+            }
           }
         }
-        if(c===win1 || r===win1 || dr===win1 || dl===win1){ alert("One wins!"); return true;}
-      } r=0;
+        if(
+          colSeries === win1 ||
+          rowSeries === win1 ||
+          diagRightSeries === win1 ||
+          diagLeftSeries === win1 ) {
+          alert("Corgi Butt wins!");
+          return true;
+        }
+      } rowSeries = false;
     }
 
   }
@@ -91,17 +152,17 @@ $(document).ready(function() {
     testWin();
     changeTurns();
 
-    console.log(board);
-    console.log('totalPlays' + totalPlays);
-    console.log('currPlayer' + currPlayer);
+    if( currPlayer === 0 ) {
+      var corg = 'face';
+    } else {
+      var corg = 'butt';
+    }
+
+    $('p').text(' ');
+    $('p').text('Current Player: Corgi ' + corg);
     // console.log(counter);
 
   });
-
-  // need to change code to reset game
-  // $('button').on('click', function(event) {
-  //   $('.circle').removeClass('blue black');
-  // });
 
 });
 
@@ -121,41 +182,5 @@ $(document).ready(function() {
 // *Lots of research generally on MDN, jQuery, stackoverflow, codeacademy & W3Schools
 // *Tons of help from classmates on too many issues to list
 
-// beautiful and elegant code from:
+// Check for wins code help from:
 // http://stackoverflow.com/questions/21011011/multi-dimensional-array-check-for-diagonal-consecutive-values
-// Going to try to rewrite this, but it all came from link above. Sadly, it removed a couple days of my work, but I wasn't going to figure the diagnols out on my own, and this was the only code I could find that gave me a reasonable/understandable hint.
-  // function testWin() {
-  //   var win0=3, len=board.length, r=0, c=0, dr=0, dl=0;
-  //   for(var i=0;i<len;i++){
-  //     for(var j=0;j<len;j++){
-  //       (board[j][i]===0) ? c++ : c=0;
-  //       (board[i][j]===0) ? r++ : r=0;
-  //       if(board[i][j]===0 && i<len-win0+1){ dr=0; dl=0;
-  //         for(var z=0;z<win0;z++){
-  //           (board[i+z][j+z]===0) ? dr++ : dr=0;
-  //           (board[i+z][j-z]===0) ? dl++ : dl=0;
-  //         }
-  //       }
-  //       if(c===win0 || r===win0 || dr===win0 || dl===win0){ alert("Zero wins!"); return true;}
-  //     } r=0;
-  //   }
-
-  //   var win1=3, len=board.length, r=0, c=0, dr=0, dl=0;
-  //   for(var i=0;i<len;i++){
-  //     for(var j=0;j<len;j++){
-  //       (board[j][i]===1) ? c++ : c=0;
-  //       (board[i][j]===1) ? r++ : r=0;
-  //       if(board[i][j]===1 && i<len-win1+1){ dr=0; dl=0;
-  //         for(var z=0;z<win1;z++){
-  //           (board[i+z][j+z]===1) ? dr++ : dr=0;
-  //           (board[i+z][j-z]===1) ? dl++ : dl=0;
-  //         }
-  //       }
-  //       if(c===win1 || r===win1 || dr===win1 || dl===win1){ alert("One wins!"); return true;}
-  //     } r=0;
-  //   }
-
-  // }
-
-
-
