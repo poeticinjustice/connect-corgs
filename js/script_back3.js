@@ -111,15 +111,21 @@ $(document).ready(function() {
 // Cyrus helped with parseInt and data-col
 // click and unbind help from: https://css-tricks.com/snippets/jquery/click-once-and-unbind
 
-// function ubind(){
-//   if(col0.length > 2) {
-//     $('table').unbind('click');
-//     console.log('column 0 ' + col0);
-//   };
-// };
-
 // *Lots of research generally on MDN, jQuery, stackoverflow, codeacademy & W3Schools
 // *Tons of help from classmates on too many issues to list
+
+// Initial help with repeat sequence -- not used
+// http://stackoverflow.com/questions/15688193/how-to-find-3-or-more-consecutive-characters
+// http://stackoverflow.com/questions/6176684/how-to-determine-if-a-string-contains-a-sequence-of-repeated-letters
+
+  // function ubind(){
+  //   if(col0.length > 2) {
+  //     $('table').unbind('click');
+  //     console.log('column 0 ' + col0);
+  //   };
+  // };
+
+
 
 // beautiful and elegant code from:
 // http://stackoverflow.com/questions/21011011/multi-dimensional-array-check-for-diagonal-consecutive-values
