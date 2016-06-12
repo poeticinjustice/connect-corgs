@@ -7,6 +7,9 @@ $(document).ready(function() {
   let currPlayer = 0;
   let totalPlays = 0;
 
+  winMessage0 = 'You win, Corgi Face!';
+  winMessage1 = 'You win, Corgi Butt!';
+
   let board = [
     [], // col0: add value of what class is added each time a column is clicked
     [], // col1
@@ -34,7 +37,9 @@ $(document).ready(function() {
     board.forEach(function(cols,col){
       cols.forEach(function(value,row){
         // name your ids with a string
-        $(`#cell${row}${col}`).find('div').addClass( PLAYERS[ value ] )
+        $(`#cell${row}${col}`).find('div').addClass( PLAYERS[ value ] );
+        $(`#cell${row}${col}`).find('div').addClass('animated slideInDown')
+        $(`#cell${row}${col}`).find('div').addClass('animated zoomInDown');
       })
     })
   }
@@ -50,17 +55,17 @@ $(document).ready(function() {
     for( var i = 0; i < bLength; i++ ) { // begin calculating for win0
       for( var j = 0; j < bLength; j++ ) {
         // (board[j][i]===0) ? c++ : c=0;
-        if( board[i][j] === 0 ) {
+        if( board[j][i] === 0 ) {
           colSeries++;
         } else {
-          colSeries=false;
+          colSeries = false;
         }
         // (board[i][j]===0) ? r++ : r=0;
         if( board[i][j] === 0 ) {
-          console.log(board[i][j]);
+          // console.log(board[i][j]);
           rowSeries++;
         } else {
-          rowSeries=false;
+          rowSeries = false;
         }
         if( board[i][j] === 0 && i < bLength - win0 + 1 ) {
           diagRightSeries = false;
@@ -85,9 +90,10 @@ $(document).ready(function() {
           rowSeries === win0 ||
           diagRightSeries === win0 ||
           diagLeftSeries === win0 ) {
+          alert (winMessage0);
           return true;
-          $('p').text(' ');
-          $('p').text('Corgi Face Wins')
+          // $('p').text(' ');
+          // $('p').text('Corgi Face Wins')
         }
       } rowSeries = false;
     }
@@ -129,7 +135,7 @@ $(document).ready(function() {
           rowSeries === win1 ||
           diagRightSeries === win1 ||
           diagLeftSeries === win1 ) {
-          alert("Corgi Butt wins!");
+          alert(winMessage1);
           return true;
         }
       } rowSeries = false;
