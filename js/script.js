@@ -22,14 +22,14 @@ $(document).ready(function() {
 
   $('button').on('click', function() {
     location.reload();
-  });
+  }); // currently using reload function, but would like to use an initialization function that resets all global variables and removes classes--popping them off.
 
   function changeTurns(){
     if(totalPlays % 2 === 0) {
       currPlayer = 0;
     } else {
       currPlayer = 1;
-    };
+    }; //switches playes based on total number of plays, using remainder
   };
 
   // this is a sloppy way to update the html, but it works
@@ -39,7 +39,6 @@ $(document).ready(function() {
         // name your ids with a string
         $(`#cell${row}${col}`).find('div').addClass( PLAYERS[ value ] );
         $(`#cell${row}${col}`).find('div').addClass('animated slideInDown')
-        $(`#cell${row}${col}`).find('div').addClass('circle');
       })
     })
   }
@@ -52,17 +51,15 @@ $(document).ready(function() {
     let colSeries = 0;  // number of consecutive repetitions in column
     let diagRightSeries = 0; // number of consecutive repetitions in right diagnal
     let diagLeftSeries = 0; // number of consecutive repetitions in left diagnal
-    for( var i = 0; i < bLength; i++ ) { // begin calculating for win0
-      for( var j = 0; j < bLength; j++ ) {
-        // (board[j][i]===0) ? c++ : c=0;
+    for( var i = 0; i < bLength; i++ ) { // begin calculating for win0; board length--there are seven columns.
+      for( var j = 0; j < bLength; j++ ) { //
+        // (board[j][i]===0) ? c++ : c=0; ** pulled heavily from another project that had a similar algorithm and used ? & : to switch between if/then parameters. Wrote out if/then statements for clearer understanding and practice, but basically, one can make a statement, and use a "?" to initiate the "if" parameter and a ":" to initiate the "then" parameter, leading to svelte code.
         if( board[j][i] === 0 ) {
           colSeries++;
         } else {
           colSeries = false;
         }
-        // (board[i][j]===0) ? r++ : r=0;
         if( board[i][j] === 0 ) {
-          // console.log(board[i][j]);
           rowSeries++;
         } else {
           rowSeries = false;
@@ -71,13 +68,11 @@ $(document).ready(function() {
           diagRightSeries = false;
           diagLeftSeries = false;
           for( var z = 0; z < win0; z++ ) {
-            // (board[i+z][j+z]===0) ? dr++ : dr = 0;
             if( board[i+z][j+z] === 0 ) {
               diagRightSeries++;
             } else {
               diagRightSeries = false;
             }
-            // (board[i+z][j-z]===0) ? dl++ : dl = 0;
             if( board[i+z][j-z] === 0 ) {
               diagLeftSeries++;
             } else {
