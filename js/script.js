@@ -165,7 +165,7 @@ $(document).ready(function() {
     }
 
     $('p').text(' ');
-    $('p').text('Current Player: Corgi ' + corg);
+    $('p').text('Your turn: Corgi ' + corg);
     // console.log(counter);
 
   });
