@@ -39,7 +39,7 @@ $(document).ready(function() {
         // name your ids with a string
         $(`#cell${row}${col}`).find('div').addClass( PLAYERS[ value ] );
         $(`#cell${row}${col}`).find('div').addClass('animated slideInDown')
-        $(`#cell${row}${col}`).find('div').addClass('animated zoomInDown');
+        $(`#cell${row}${col}`).find('div').addClass('circle');
       })
     })
   }
