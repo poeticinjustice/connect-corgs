@@ -60,5 +60,6 @@ Features to add:
 - The reset button is currently using reload function. I would like to use an initialization function that resets all global variables and removes classes while also creating a temporary class that pops the dogs off to go herd sheep. Can’t keep corgis in boxes for too long.
 - More animation and letting users choose other options. Though seriously, who doesn’t want to see a puppy’s face or a heart shaped but that says I <3 u. I mean, the “I” is even shaped like a bone. Also, I’m comfortable with my maturity, among other things.
 - Touch controls and full responsiveness so that the game could be played on phones/tablets.
+- It would be nice if the circle didn’t disappear when a dog falls. Maybe the classes could   be layered or the circle could fade out while the corgi chip fell into place.
 
 That’s it for now. I’m going to add a farm background with sheep. I want to find a gif that moves and makes my site look that much cooler, but relevance is important and I suspect that I won’t find an appropriate gif or movie file in time.
