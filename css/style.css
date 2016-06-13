@@ -1,3 +1,15 @@
+html {
+  background: url(../img/sheeps.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/*https://css-tricks.com/perfect-full-page-background-image/*/
+/*https://en.wikipedia.org/wiki/Bisset_v_Wilkinson*/
+/*https://upload.wikimedia.org/wikipedia/commons/e/e7/Gauteng-Sheep_Farming-001.jpg*/
+
+
 h1{
   text-align: center;
 }
