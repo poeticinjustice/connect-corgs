@@ -42,3 +42,23 @@ After writing the pseudocode, I suspect I might be spending most of my time to g
 
 ![](./corg-wireframe.png)
 
+--------------------------------------------
+
+Update:
+
+There's still so much that I want to do. If there's a bit of time, then I'll try to make it look a little nicer and add more animation.
+
+With much help from instructors, classmates and the interwebs (see comments in code for more specific attribution, but thanks a lot Jason, for really helping with the overall structure and Bobby for explaining the initial tasks), I've been able to create a static grid, using a table that I manually created in HTML to resemble a connect four board that has corgis battle to win by taking four consecutive spots in any one of horizontal (along the x-axis or y = a constant), vertical (along y or x = a constant) or diagonal (x = y; x = -y) directions.
+
+I borrowed heavily from an online algorithm to generate my code to test for a winner. I could understand it a bit better and try to impliment it organically in the future. I imagine that I will rewrite this game after the class when I am updating my portfolio to help me fully grasp that evaluation and to add features and make the game look nicer. Perhaps, I'll be doing some of that while still in class.
+
+Features to add:
+
+- Make the board dynamic with a prompt. I feel like it would be incredibly useful to learn how to take the users’ input for what kind of grid they would like to see and have the game  dynamically create the html table as well as the appropriate css and javascript. For example, if a user responded to prompts indicating a row that’s nine places, a column that’s eight places and that requires five cells to connect before winning, then the script would generate the board, update the board’s multidimensional array and updated the win algorithm to match. Actually, the CSS could just be a little more responsive, and it wouldn’t need to be dynamically generated.
+- Once a column is full, I need to unbind clicking on the column, or at least, stop the change turn function for just that column. So far, I have only been able to stop it entirely, effectively ending the game. That doesn’t work.
+- The game doesn’t end. It needs to do that after someone wins. See reset button discussion below re initialization function. That would probably help to stop everything too.
+- The reset button is currently using reload function. I would like to use an initialization function that resets all global variables and removes classes while also creating a temporary class that pops the dogs off to go herd sheep. Can’t keep corgis in boxes for too long.
+- More animation and letting users choose other options. Though seriously, who doesn’t want to see a puppy’s face or a heart shaped but that says I <3 u. I mean, the “I” is even shaped like a bone. Also, I’m comfortable with my maturity, among other things.
+- Touch controls and full responsiveness so that the game could be played on phones/tablets.
+
+That’s it for now. I’m going to add a farm background with sheep. I want to find a gif that moves and makes my site look that much cooler, but relevance is important and I suspect that I won’t find an appropriate gif or movie file in time.
